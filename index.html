@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإجازات المرضية - صحة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- الترويسة العلوية -->
+    <header class="navbar">
+        <div class="nav-right">
+            <div class="brand">
+                <a href="#" class="seha-brand-link">
+                    <img src="seha.jpg" alt="صحة" class="brand-icon-img">
+                    <span class="brand-title-ar">صحة</span>
+                    <span class="brand-title-en">Seha</span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="#">الرئيسية</a>
+                <a href="#">الخدمات</a>
+                <a href="#">صحة بلس</a>
+                <a href="#" class="active">الاستعلامات</a>
+                <a href="#">الأسئلة الشائعة</a>
+                <a href="#">تواصل معنا</a>
+            </nav>
+        </div>
+        <div class="auth-buttons">
+            <a href="#" class="btn-login"><i class="fa-regular fa-user"></i> تسجيل الدخول</a>
+            <a href="#" class="link-signup">إنشاء حساب</a>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        
+        <div class="breadcrumb">
+            <a href="#">الرئيسية</a> <span>&lt;</span> <a href="#" class="current-crumb">الإجازات المرضية</a>
+        </div>
+
+        <h1>الإجازات المرضية</h1>
+        <p class="subtitle">خدمة الاستعلام عن الإجازات المرضية تتيح لك الاستعلام عن حالة طلبك للإجازة ويمكنك طباعتها عن طريق تطبيق صحتي</p>
+
+        <!-- نموذج البحث -->
+        <form id="searchForm" class="search-form">
+            <input type="text" id="serviceCode" placeholder="رمز الخدمة" required>
+            <input type="text" id="nationalId" placeholder="رقم الهوية / الإقامة" required>
+            
+            <button type="submit" id="submitBtn" class="btn-submit">استعلام</button>
+            
+            <div id="errorMessage" class="error-msg" style="display: none;">لا يوجد نتائج</div>
+        </form>
+
+        <!-- قسم النتيجة -->
+        <div id="resultSection" class="result-section" style="display: none;">
+            
+            <div class="result-card">
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span class="result-label">الاسم:</span>
+                        <span class="result-value">حمود عيسى عبدالله الحربي</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">تاريخ إصدار تقرير الإجازة:</span>
+                        <span class="result-value">2026-22-09</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">تبدأ من:</span>
+                        <span class="result-value">2026-22-09</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">وحتـى:</span>
+                        <span class="result-value">2026-22-09</span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">المدة بالأيام:</span>
+                        <span class="result-value">1</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">اسم الطبيب:</span>
+                        <span class="result-value">سلوى سيد امام موسى</span>
+                    </div>
+
+                    <div class="result-item full-width">
+                        <span class="result-label">المسمى الوظيفي:</span>
+                        <span class="result-value">طب بشري</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button type="button" id="newQueryBtn" class="btn-submit">استعلام جديد</button>
+                <button type="button" id="backQueryBtn" class="btn-back">رجوع للاستعلامات</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- الفوتر الرسمي -->
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <!-- العمود الأول: نبذة عن المنصة -->
+            <div class="footer-col about-col">
+                <div class="footer-brand">
+                    <a href="#" class="seha-brand-link white-version">
+                        <img src="seha.jpg" alt="صحة" class="brand-icon-img footer-img-fix">
+                        <span class="brand-title-ar">صحة</span>
+                        <span class="brand-title-en">Seha</span>
+                    </a>
+                </div>
+                <div class="footer-desc">
+                    <p>منصة صحة تخدم جميع المنشآت الطبية من خلال تقديم الخدمات الصحية إلكترونياً لجميع المنشآت الطبية، وتسعى إلى توحيد وأتمتة الإجراءات والخدمات بما يرفع جودة الأداء ويخفض التكاليف.</p>
+                </div>
+            </div>
+            
+            <!-- العمود الثاني: القائمة الرئيسية -->
+            <div class="footer-col links-col">
+                <h3>القائمة الرئيسية</h3>
+                <ul>
+                    <li><a href="#">- الخدمات</a></li>
+                    <li><a href="#">- صحة بلس</a></li>
+                    <li><a href="#">- الاستعلامات</a></li>
+                    <li><a href="#">- الأسئلة الشائعة</a></li>
+                    <li><a href="#">- الأثر البيئي</a></li>
+                    <li><a href="#">- تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود الثالث: تواصل معنا -->
+            <div class="footer-col contact-col">
+                <h3>تواصل معنا</h3>
+                
+                <div class="contact-item">
+                    <span>920002005</span>
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-item">
+                    <span>support@seha.sa</span>
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="contact-item">
+                    <span>920002005</span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                
+                <p class="work-hours">أوقات العمل: الأحد حتى الخميس 8 ص - 11 م</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+
+                <div class="partner-logos">
+                    <div class="partner-card"><img src="lean.png" alt="Lean"></div>
+                </div>
+
+                <div class="footer-copyright">
+                    <p>منصة صحة معتمدة من قبل وزارة الصحة © 2026</p>
+                    <div class="legal-links">
+                        <a href="#">سياسة الخصوصية</a> | 
+                        <a href="#">شروط الاستخدام</a> | 
+                        <a href="#">دليل الاستخدام</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- قائمة وخدمات إمكانية الوصول والتمرير العائمة التفاعلية -->
+    <div class="floating-widget" id="accessibilityWidget">
+        <div class="accessibility-menu" id="accessibilityMenu">
+            <button onclick="adjustFontSize(1)" title="تكبير الأحرف والسطور">A+</button>
+            <button onclick="adjustFontSize(-1)" title="تصغير الأحرف والسطور">A-</button>
+            <button onclick="scrollToTop()" title="الانتقال للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+            <button onclick="scrollToBottom()" title="الانتقال للأسفل"><i class="fa-solid fa-arrow-down"></i></button>
+        </div>
+        
+        <div class="widget-pill" id="widgetToggle">
+            <div class="widget-icon-circle blue-circle"><i class="fa-solid fa-circle-half-stroke"></i></div>
+            <div class="widget-icon-circle white-circle"><i class="fa-solid fa-comment-dots"></i></div>
+        </div>
+    </div>
+
+    <!-- كود التفاعل والتحكم البرمجي -->
+    <script>
+        let currentZoom = 1.25;
+        document.body.style.zoom = currentZoom;
+
+        const searchForm = document.getElementById('searchForm');
+        const resultSection = document.getElementById('resultSection');
+        const newQueryBtn = document.getElementById('newQueryBtn');
+        const backQueryBtn = document.getElementById('backQueryBtn');
+        const errorMessage = document.getElementById('errorMessage');
+
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const serviceVal = document.getElementById('serviceCode').value.trim();
+            const nationalVal = document.getElementById('nationalId').value.trim();
+
+            // التحقق من رقم الهوية مع أي من رمزي الخدمة (القديم أو الجديد)
+            const isValidService = (serviceVal === 'GSL23030903299' || serviceVal === 'GSL23030900222');
+
+            if (isValidService && nationalVal === '1117471217') {
+                errorMessage.style.display = 'none';
+                searchForm.style.display = 'none';
+                resultSection.style.display = 'block';
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                errorMessage.style.display = 'block';
+                resultSection.style.display = 'none';
+            }
+        });
+
+        newQueryBtn.addEventListener('click', function() {
+            resultSection.style.display = 'none';
+            searchForm.style.display = 'flex';
+            document.getElementById('serviceCode').value = '';
+            document.getElementById('nationalId').value = '';
+            errorMessage.style.display = 'none';
+            document.getElementById('serviceCode').focus();
+        });
+
+        backQueryBtn.addEventListener('click', function() {
+            resultSection.style.display = 'none';
+            searchForm.style.display = 'flex';
+            errorMessage.style.display = 'none';
+        });
+
+        const widgetToggle = document.getElementById('widgetToggle');
+        const accessibilityMenu = document.getElementById('accessibilityMenu');
+
+        widgetToggle.addEventListener('click', function() {
+            if (accessibilityMenu.style.display === 'flex') {
+                accessibilityMenu.style.display = 'none';
+            } else {
+                accessibilityMenu.style.display = 'flex';
+            }
+        });
+
+        function adjustFontSize(direction) {
+            currentZoom += direction * 0.1;
+            if (currentZoom < 0.9) currentZoom = 0.9;
+            if (currentZoom > 1.6) currentZoom = 1.6;
+            document.body.style.zoom = currentZoom;
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            accessibilityMenu.style.display = 'none';
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            accessibilityMenu.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
