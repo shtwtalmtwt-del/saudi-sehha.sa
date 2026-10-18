@@ -52,7 +52,7 @@
             
             <button type="submit" id="submitBtn" class="btn-submit">استعلام</button>
             
-            <div id="errorMessage" class="error-msg" style="display: none;">لا يوجد نتائج</div>
+            <div id="errorMessage" class="error-msg" style="display: none;">لا يوجد نتائج أو بيانات غير صحيحة</div>
         </form>
 
         <!-- قسم النتيجة -->
@@ -62,34 +62,34 @@
                 <div class="result-grid">
                     <div class="result-item">
                         <span class="result-label">الاسم:</span>
-                        <span class="result-value">حمود عيسى عبدالله الحربي</span>
+                        <span class="result-value" id="resName">-</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">تاريخ إصدار تقرير الإجازة:</span>
-                        <span class="result-value">2026-29-09</span>
+                        <span class="result-value" id="resIssueDate">-</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">تبدأ من:</span>
-                        <span class="result-value">2026-29-09</span>
+                        <span class="result-value" id="resStartDate">-</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">وحتـى:</span>
-                        <span class="result-value">2026-29-09</span>
+                        <span class="result-value" id="resEndDate">-</span>
                     </div>
                     
                     <div class="result-item">
                         <span class="result-label">المدة بالأيام:</span>
-                        <span class="result-value">1</span>
+                        <span class="result-value" id="resDays">-</span>
                     </div>
                     <div class="result-item">
                         <span class="result-label">اسم الطبيب:</span>
-                        <span class="result-value">شيرين حمدان</span>
+                        <span class="result-value" id="resDoctor">-</span>
                     </div>
 
                     <div class="result-item full-width">
                         <span class="result-label">المسمى الوظيفي:</span>
-                        <span class="result-value">طب بشري</span>
+                        <span class="result-value" id="resSpecialty">-</span>
                     </div>
                 </div>
             </div>
@@ -194,6 +194,43 @@
         let currentZoom = 1.25;
         document.body.style.zoom = currentZoom;
 
+        // قاعدة بيانات الشخصين (يمكنك تعديل الرموز أو التواريخ والأطباء هنا بكل سهولة)
+        const usersDatabase = {
+            // بيانات الشخص الأول: حمود عيسى الحربي
+            "GSL2303088439": {
+                nationalId: "1117471217",
+                name: "حمود عيسى عبدالله الحربي",
+                issueDate: "2026-09-29",
+                startDate: "2026-09-29",
+                endDate: "2026-09-29",
+                days: "1",
+                doctor: "شيرين حمدان",
+                specialty: "طب بشري"
+            },
+            "GSL23030901442": { // رمز خدمة إضافي لنفس الشخص حمود
+                nationalId: "1117471217",
+                name: "حمود عيسى عبدالله الحربي",
+                issueDate: "2026-10-15",
+                startDate: "2026-10-15",
+                endDate: "2026-10-15",
+                days: "1",
+                doctor: "شيرين حمدان",
+                specialty: "طب بشري"
+            },
+
+            // بيانات الشخص الثاني: عمر عيسى الحربي (مع معلومات مختلفة)
+            "GSL2303088555": { // رمز خدمة عمر (يمكنك تغييره إلى ما تريده)
+                nationalId: "111324866",
+                name: "عمر عيسى عبدالله الحربي",
+                issueDate: "2026-10-05",
+                startDate: "2026-10-05",
+                endDate: "2026-10-07",
+                days: "3",
+                doctor: "محمد أحمد",
+                specialty: "طوارئ"
+            }
+        };
+
         const searchForm = document.getElementById('searchForm');
         const resultSection = document.getElementById('resultSection');
         const newQueryBtn = document.getElementById('newQueryBtn');
@@ -205,10 +242,20 @@
             const serviceVal = document.getElementById('serviceCode').value.trim();
             const nationalVal = document.getElementById('nationalId').value.trim();
 
-            // التحقق من رقم الهوية مع أي من رمزي الخدمة (القديم أو الجديد)
-            const isValidService = (serviceVal === 'GSL2303088439' || serviceVal === 'GSL23030901442');
+            // البحث عن بيانات المستخدم في القاعدة بناءً على رمز الخدمة
+            const matchedUser = usersDatabase[serviceVal];
 
-            if (isValidService && nationalVal === '1117471217') {
+            // التحقق من أن رمز الخدمة موجود وأن رقم الهوية المطابق صحيح
+            if (matchedUser && matchedUser.nationalId === nationalVal) {
+                // تعبئة البيانات في الصفحة ديناميكياً
+                document.getElementById('resName').textContent = matchedUser.name;
+                document.getElementById('resIssueDate').textContent = matchedUser.issueDate;
+                document.getElementById('resStartDate').textContent = matchedUser.startDate;
+                document.getElementById('resEndDate').textContent = matchedUser.endDate;
+                document.getElementById('resDays').textContent = matchedUser.days;
+                document.getElementById('resDoctor').textContent = matchedUser.doctor;
+                document.getElementById('resSpecialty').textContent = matchedUser.specialty;
+
                 errorMessage.style.display = 'none';
                 searchForm.style.display = 'none';
                 resultSection.style.display = 'block';
